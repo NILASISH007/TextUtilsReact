@@ -10,7 +10,7 @@ color:'white',
     const toggleStyle = ()=>
     {
       
-        if(myStyle.color == 'white')
+        if(myStyle.color === 'white')
         {
             setmyStyle({
                         color:'black',
