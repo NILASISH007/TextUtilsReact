@@ -43,17 +43,17 @@ export default function TextForm(props) {
        
         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
         </div>
-       <button className="btn btn-warning mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-       <button className="btn btn-warning mx-2" onClick={handleDownClick}>Convert to LowerCase</button>
-       <button className="btn btn-warning mx-2" onClick={handleClearClick}>clear</button>
-       <button className="btn btn-warning mx-2" onClick={handleCopy}>Copy</button>
-       <button className="btn btn-warning mx-2" onClick={handleExtraSpace}>Remove extra space</button>
+       <button disabled={text.length===0} className="btn btn-warning mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
+       <button disabled={text.length===0} className="btn btn-warning mx-2" onClick={handleDownClick}>Convert to LowerCase</button>
+       <button disabled={text.length===0} className="btn btn-warning mx-2" onClick={handleClearClick}>clear</button>
+       <button disabled={text.length===0} className="btn btn-warning mx-2" onClick={handleCopy}>Copy</button>
+       <button disabled={text.length===0} className="btn btn-warning mx-2" onClick={handleExtraSpace}>Remove extra space</button>
 
             </div>
             <div className="container my-2">
                 <h2>Review Paragraph</h2>
-                <p>In this Paragraph there are {text.length} characters and  {text.split(" ").length}</p>
-                <p>It will take { 0.008 * text.split(" ").length } minutes to read.</p>
+                <p>In this Paragraph there are {text.length} characters and  {text.split(" ").filter((element)=>{return element.length!==0}).length } words</p>
+                <p>It will take { 0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length } minutes to read.</p>
                 <h3>Preview</h3>
                 <p>{text.length>0?text:"Enter any text on the white space to see the preview"}</p>
             </div>
